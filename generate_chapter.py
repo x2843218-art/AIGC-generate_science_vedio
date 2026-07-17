@@ -10,9 +10,9 @@ from volcenginesdkarkruntime import Ark
 
 BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
 MODEL = "doubao-seedance-2-0-260128"
-DEFAULT_PROMPT_FILE = Path("prompts") / "chapter03.json"
-FALLBACK_PROMPT_FILE = Path("prompts") / "chapter03" / "chapter03.json"
-OUTPUT_DIR = Path("outputs_2") / "shots03_2"
+DEFAULT_PROMPT_FILE = Path("prompts") / "chapter01.json"
+FALLBACK_PROMPT_FILE = Path("prompts") / "chapter01" / "chapter01.json"
+OUTPUT_DIR = Path("outputs") / "shots01"
 POLL_INTERVAL_SECONDS = 3
 MAX_RETRIES = 3
 
