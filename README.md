@@ -1,6 +1,6 @@
 # Seedance 批量视频生成项目
 
-本项目用于把第一章节的分镜 prompt 批量提交到火山方舟 Ark / Seedance，生成 12 个镜头视频，并通过 FFmpeg 拼接成完整的 `chapter01.mp4`。当前脚本已经跑通，文档只说明现有流程与文件职责。
+本项目用于把第一章节的分镜 prompt 批量提交到火山方舟 Ark / Seedance，生成 n 个镜头视频，并通过 FFmpeg 拼接成完整的 `chapter01.mp4`。当前脚本已经跑通，文档只说明现有流程与文件职责。
 
 ## 项目结构
 
@@ -26,8 +26,8 @@ QUANTUN-DOCUMENT/
 - `demo_standard.py`：单条 Seedance 测试脚本，用于验证 API Key、模型调用、任务创建和轮询是否正常。
 - `scripts/generate_chapter.py`：批量生成镜头视频脚本，会读取章节分镜 prompt，为每个 shot 创建 Seedance 任务，并下载生成结果。
 - `prompts/chapter01/chapter01.json`：第一章节分镜 prompt 文件，按 shot 组织镜头编号、时长、画面 prompt 和备注。
-- `outputs/shots/`：批量生成后的镜头视频目录，用于保存 `shot001.mp4` 到 `shot012.mp4`。
-- `scripts/merge_chapter.py`：调用 FFmpeg，把 `outputs/shots/` 下的 12 个镜头按顺序拼接成第一章节视频。
+- `outputs/shots/`：批量生成后的镜头视频目录，用于保存 `shot001.mp4` 到 `shotXXX.mp4`。
+- `scripts/merge_chapter.py`：调用 FFmpeg，把 `outputs/shots/` 下的 n 个镜头按顺序拼接成第一章节视频。
 - `outputs/chapter01.mp4`：第一章节最终拼接输出，可用于汇报预览或继续叠加配音、字幕等后期流程。
 
 ## 环境准备
@@ -106,7 +106,7 @@ prompts/chapter01/chapter01.json
 outputs/shots/shot001.mp4
 outputs/shots/shot002.mp4
 ...
-outputs/shots/shot012.mp4
+outputs/shots/shotXXX.mp4
 ```
 
 脚本会按分镜顺序逐条创建 Seedance 任务，等待任务完成后下载视频。每个镜头保存为对应的 `shotXXX.mp4` 文件。
@@ -189,7 +189,7 @@ python scripts/merge_chapter.py --ffmpeg C:\path\to\ffmpeg.exe
 
 当前项目中已经存在：
 
-- `outputs/shots/shot001.mp4` 到 `outputs/shots/shot012.mp4`
+- `outputs/shots/shot001.mp4` 到 `outputs/shots/shotXXX.mp4`
 - `outputs/chapter01.mp4`
 
 这说明第一章节已经完成了从分镜 prompt、Seedance 批量生成、镜头下载到 FFmpeg 拼接的主流程。
