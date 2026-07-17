@@ -163,7 +163,7 @@ pip install "volcengine-python-sdk[ark]"
 
 如果任务状态变为 `failed`，先查看脚本打印的错误信息。常见原因包括 API Key 无效、账户权限不足、模型名不可用、prompt 参数不符合平台要求，或平台侧任务临时失败。
 
-建议先运行 `python test_seedance.py` 做最小化验证，再回到批量脚本定位是哪一个 shot 失败。
+建议先运行 `python demo_standard.py` 做最小化验证，再回到批量脚本定位是哪一个 shot 失败。
 
 ### 下载视频失败
 
